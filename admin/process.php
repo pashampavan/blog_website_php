@@ -5,7 +5,8 @@ if (isset($_POST["create"])) {
     $summary = mysqli_real_escape_string($conn, $_POST["summary"]);
     $content = mysqli_real_escape_string($conn, $_POST["content"]);
     $date = mysqli_real_escape_string($conn, $_POST["date"]);
-    $sqlInsert = "INSERT INTO posts(date,title, summary, content) VALUES ('$date', '$title', '$summary','$content' )";
+    $ran_int=rand(1, 10000);
+    $sqlInsert = "INSERT INTO posts(id,date,title, summary, content) VALUES ('$ran_int','$date', '$title', '$summary','$content' )";
     if(mysqli_query($conn, $sqlInsert)){
         session_start();
         $_SESSION["create"] = "Post added successfully";
